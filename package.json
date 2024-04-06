@@ -1,0 +1,56 @@
+{
+  "name": "zip-tz",
+  "version": "1.0.0-alpha.1",
+  "description": "Convert ZIP code to Time Zone",
+  "author": "Alec Perkins <mail@alecperkins.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alecperkins/zip-tz/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alecperkins/zip-tz.git"
+  },
+  "homepage": "https://alecperkins.net/zip-tz",
+  "keywords": [
+    "zip code",
+    "time zone"
+  ],
+  "type": "commonjs",
+  "main": "./index.cjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.mjs",
+      "require": "./index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "private": true,
+  "scripts": {
+    "build": "run-s build:*",
+    "build:types": "tsc-transpile-only --declaration --emitDeclarationOnly --outDir ./build/ ./src/index.ts",
+    "build:mjs": "tsc-transpile-only --removeComments --module es2020 --target es2020 --outDir ./build/ ./src/index.ts && mv ./build/index.js ./build/index.mjs",
+    "build:cjs": "tsc-transpile-only --removeComments --module commonjs --target es2020 --outDir ./build/ ./src/index.ts && mv ./build/index.js ./build/index.cjs",
+    "build-dist": "node ./scripts/build-dist.js",
+    "prepack": "npm run build && npm run build-dist",
+    "inspect-package": "npm run prepack && npm pack --dry-run ./dist/",
+    "publish-to-npm": "npm run inspect-package && node ./scripts/confirm-publish.js && npm publish ./dist/ && npm run postpublish",
+    "postpublish": "cd ./tests/integration/ && npm run test-published",
+    "test": "run-p test:*",
+    "test:types": "tsc --lib es2017 --noEmit ./src/index.ts",
+    "test:unit": "vitest --run ./tests/*.*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "node-fetch": "^3.3.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.0.2",
+    "typescript-transpile-only": "^0.0.4",
+    "vitest": "^1.4.0"
+  }
+}
