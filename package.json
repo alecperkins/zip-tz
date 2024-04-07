@@ -27,6 +27,7 @@
     },
     "./package.json": "./package.json"
   },
+  "unpkg": "zip-tz.min.js",
   "engines": {
     "node": ">=10"
   },
