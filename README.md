@@ -13,7 +13,7 @@ Given a ZIP code, get the most likely practical time zone in the [Time Zone Data
 
 Rather than a more precise zone name, this library flattens the results to the largest canonical zone for that offset and DST behavior. The precise zones exist for historical reasons and are necessary in the Time Zone Database to compute past dates. For example, `America/Kentucky/Monticello` allows the database to describe the switch of several counties in Kentucky from Central to Eastern time in 2000. Since this library is only concerned with the current timezone configuration, it assigns those ZIP codes to the canonical zone for Eastern: `America/New_York`.
 
-The set of supported time zones includes several outside of the US proper, since they also participate in the ZIP code system:
+The set of supported time zones, including several outside of the US proper, since they also participate in the ZIP code system:
 
 * `America/Adak`
 * `America/Anchorage`
@@ -70,7 +70,7 @@ Then call with a ZIP code:
 'America/New_York'
 ```
 
-Invalid ZIP codes will work, but malformed ZIP codes will throw:
+Invalid ZIP codes will resolve, but malformed ZIP codes will throw:
 ```javascript
 > zipTZ('83005') // Not real
 'America/Denver'
