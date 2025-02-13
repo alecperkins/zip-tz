@@ -5,6 +5,7 @@
     "test-published:commonjs": "node ./test-published/commonjs.cjs",
     "test-published:ecma": "node ./test-published/ecma.mjs",
     "test-published:typescript": "ts-node ./test-published/typescript.ts",
+    "test-published:transpiledts": "node ./test-published/transpiledts.cjs",
     "test-published:browser": "ts-node ./test-published/browser.ts",
     "test-published:deno": "deno run ./test-published/deno.ts"
   },
