@@ -1,6 +1,6 @@
 {
   "name": "zip-tz",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert ZIP code to Time Zone",
   "author": "Alec Perkins <mail@alecperkins.me>",
   "license": "MIT",
