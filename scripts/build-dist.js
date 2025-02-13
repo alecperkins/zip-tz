@@ -69,7 +69,9 @@ ${ code }
 Object.defineProperty(module.exports, "version", { value: "${ package_content.version }" });
 Object.defineProperty(module.exports, "__esModule", { value: true });
 Object.assign(zipTZ, exports);
-module.exports = zipTZ;`;
+module.exports = zipTZ;
+module.exports.default = zipTZ;
+`;
 }
 
 
